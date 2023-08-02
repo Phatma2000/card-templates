@@ -1,5 +1,12 @@
 import "./App.css";
-
+import FrontFoto from "./components/photos/FrontFoto192.png";
+import BackFoto from "./components/photos/BackFoto192.png";
+import Logo from "./components/photos/logo1.svg";
+import VisaPage from "../src/pages/visaPage/VisaPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import VisitCard from "./components/visitCard/VisitCard";
+import Store from "./components/context/store";
+import { useState } from "react";
 import {
   FaArrowPointer,
   FaEnvelope,
@@ -9,7 +16,91 @@ import {
 import Card2 from "./components/Cards/Card2/Card2";
 import Card3 from "./components/Cards/Card3/Card3";
 function App() {
-  const cards2 = [
+  const [selectedCard, setSelectedCard] = useState(0);
+
+  const cards = [
+    {
+      firstCardContent: {
+        companyName: "company-name",
+        companyNameStyle: "company-name-design",
+        companyNameText: "Media",
+        companyNameSlogan: "company-name-slogan",
+        companyNameSloganText: "SLOGANHERE",
+        companyNameLoremText: "lorem",
+        companyNameLoremContext: "lorem ipsum dolor",
+        backGroundImage: `../..${FrontFoto}`,
+        cardDesign: "first-card-design",
+        firstCard: "first-card",
+        LogoContent: `../..${Logo}`,
+        cardLogo: "card-first-card-logo",
+        LogoBox: "card-first-card-logo-box",
+        companyNameLoremTextBox: "company-name-lorem-text-box",
+      },
+      secondCardContent: {
+        divClassName: "company-info",
+        cardHolderName: "card-holder-name1",
+        cardHolderNameText: `THOMAS`,
+        cardHolderSurNameText: "THMIS",
+        cardHolderOccupation: "span-text",
+        cardHolderOccupationText: "occupation",
+        cardHolderOccupationDescription: "Graphic Designer",
+        backGroundImage: `../..${BackFoto}`,
+        informationBox: "information-box",
+        iconGroup: "icon-group",
+        iconInformation: "icon-information1",
+        secondCard: "second",
+      },
+      contactList: [
+        {
+          id: 1,
+          className: "down-part-lorem1",
+          text: "123 Dummy, Lorem Ipsum",
+          customStyle: { padding: "5px", fontWeight: "800" },
+        },
+        {
+          id: 2,
+          className: "down-part-number",
+          text: "+00 1234 5XXX 9012",
+          customStyle: { padding: "5px", fontWeight: "800" },
+        },
+        {
+          id: 3,
+          className: "down-part-email",
+          text: "info@email space",
+          customStyle: { padding: "5px", fontWeight: "800" },
+        },
+        {
+          id: 4,
+          className: "down-part-website",
+          text: "www.websiteaddress",
+          customStyle: { padding: "5px", fontWeight: "800" },
+        },
+      ],
+      iconList: [
+        {
+          id: 1,
+          className: "fa-location1",
+          icon: <FaLocationDot />,
+        },
+        {
+          id: 2,
+          className: "fa-phone1",
+          icon: <FaPhone />,
+        },
+        {
+          id: 3,
+          className: "fa-envelope1",
+          icon: <FaEnvelope />,
+        },
+        {
+          id: 4,
+          className: "fa-arrow-pointer1",
+          icon: <FaArrowPointer />,
+        },
+      ],
+    },
+    // card2
+
     {
       firstCardContent: {
         companyName: "company-name",
@@ -76,9 +167,8 @@ function App() {
         },
       ],
     },
-  ];
+    //card3
 
-  const cards3 = [
     {
       firstCardContent: {
         companyName: "company-name",
@@ -149,15 +239,30 @@ function App() {
       ],
     },
   ];
+
   return (
     <>
-      {cards2.map((item, i) => (
+      {/* {cards2.map((item, i) => (
         <Card2 key={i} card={item} />
       ))}
 
       {cards3.map((item, i) => (
         <Card3 key={i} card3={item} />
-      ))}
+      ))} */}
+
+      <Store.Provider value={{ selectedCard, setSelectedCard, cards }}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<VisaPage />} />
+            <Route
+              path="/visitCard"
+              element={<VisitCard card={cards[selectedCard]} />}
+            />
+            <Route path="/card2" element={<Card2 card={cards[1]} />}></Route>
+            <Route path="/card3" element={<Card3 card3={cards[2]} />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </Store.Provider>
     </>
   );
 }
