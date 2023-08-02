@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  gap: 30px;
+  /* width: 40%; */
+  height: auto;
+  padding: 20px;
+}
+.background {
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.down-part-lorem {
+  color: #272623;
+  transform: translate(-3px, 143px);
+  font-size: 12px;
+  
+}
+/* .down-part-website{
+  font-weight: 800;
+} */
+.company-name-design {
+  color: #e9e9e9;
+  text-align: left;
+  letter-spacing: 2px;
+} 
+.company-name-slogan {
+  color: orange;
+  font-size: 7px;
+  letter-spacing: 4px;
+  margin-top: 4px;
+  
+}
+.icon-group {
+  color: orange;
+  font-size: 12px;
+  padding-right: 5px;
+}
+.fa-location1:before {
+  display: none;
+}
+.fa-phone1:before {
+  display: none;
+}
+.fa-envelope1:before {
+  display: none;
+}
+.fa-arrow-pointer1:before {
+  display: none;
+}
+
+.icon-information1 {
+  font-size: 10px;
+  text-align: left;
+}
+
+.icon-information1 > div >div {
+  padding: 0px;
+}
+
+.second {
+  background-size: cover;
+  width: 400px;
+  height: 230px;
+  margin: auto;
+  box-shadow: 10px 10px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding-bottom: 10px;
+  border-radius: 15px;
+ 
+}
+.information-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.company-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.occupation {
+  color: orange;
+  font-size: 14px;
+  font-weight: 600;
+  padding-top: 5px;
+}
+
+.first-card {
+  background-size: cover;
+  width: 400px;
+  height: 230px;
+  box-shadow: 10px 10px 20px;
+  border-radius: 15px;
+}
+.first-card-design {
+  display: flex;
+  justify-content: space-around;
+  width: 170px;
+  margin: auto;
+  height: 70px;
+  align-items: center;
+  margin-top: 30px;
+
+}
+.firstCardLogo{
+    width: 50px;
+    height: auto;
+}
+.item-text{
+  font-weight:800;
+}
+.card-holder-name1{
+ display:inline-block;
+}
+.span-text{
+  font-weight: 700;
+  font-size: 16px;
+}
+.card-first-card-logo-box{
+  width: 140px;
+  text-align: center;
+}
+.card-first-card-logo{
+width: 50px;
+}
+.lorem {
+
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-end;
+  margin-top: 95px;
+  margin-right: 18px;
+
+} 

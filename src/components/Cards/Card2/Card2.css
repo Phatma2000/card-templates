@@ -40,7 +40,6 @@
     font-size: 11px;
   }
   
-  /* second card */
   
   .company-info {
     padding: 30px;
@@ -78,10 +77,10 @@
     margin-top: 8px;
   }
   
-  /* second card icons p */
+ 
   .down-part-lorem1 {
     color: #fff;
-    /* transform: translate(-11px, -44px); */
+   
     font-size: 12px;
   }
   
@@ -114,7 +113,6 @@
   
   .fonticon {
     text-align: right;
-    /* transform: translate(34px, 8px); */
   }
   
   .diviconlist {
@@ -143,14 +141,3 @@
 
   }
   
-  /* .fonticon:nth-child(2) {
-    transform: translateX(-15px);
-  }
-  
-  .fonticon:nth-child(3) {
-    transform: translateX(-80px);
-  }
-  
-  .fonticon:nth-child(4) {
-    transform: translateX(-45px);
-  } */
