@@ -10,7 +10,7 @@ const Card = ({ card3 }) => {
     <>
       <div className="cards">
         <div
-          className="first-card"
+          className="firstt-card"
           style={{
             background: `url(${CardFirst})`,
             width: "400px",

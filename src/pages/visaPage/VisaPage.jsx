@@ -8,15 +8,15 @@ import { Grid } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import Store from "../../components/context/store";
 import VisitCard from "../../components/visitCard/VisitCard";
 import Card2 from "../../components/Cards/Card2/Card2";
-import Card3 from "../../components/Cards/Card3/Card3"
+import Card3 from "../../components/Cards/Card3/Card3";
+import BgFoto from "../../components/photos/desktop-wallpaper.jpg";
 
 function VisaPage() {
-  
   const { selectedCard, setSelectedCard, cards } = useContext(Store);
   const [cardData, setCardData] = useState([]);
   const [selectData, setSelectData] = useState([]);
@@ -65,15 +65,21 @@ function VisaPage() {
 
   const handleChange = (e) => {
     //  templateBox.current.style.backgroundColor=e.target.value.progectBgColor
-    let id = e.target.value
-    setSelectedCard(id)
+    let id = e.target.value;
+    setSelectedCard(id);
     console.log(e.target.value);
   };
 
   return (
     <Grid container className="visaPageBox">
       <Grid item xs={11} md={6} className="left-box">
-        <h3 className="left-header">Choose business card</h3>
+        <h2
+          className="left-header"
+          style={{ color: "#208E2B", marginBottom: "20px" }}
+        >
+          Vizit kartı seçin.
+          <p>(Choose business card.)</p>
+        </h2>
         <Box
           onSubmit={handleSubmit}
           component="form"
@@ -84,56 +90,86 @@ function VisaPage() {
           autoComplete="off"
         >
           <TextField
-            variant="standard"
+            size="small"
+            variant="outlined"
             placeholder="FullName"
             name="fullName"
             ref={firstRef}
           />
           <TextField
+            size="small"
             placeholder="Position "
-            variant="standard"
+            variant="outlined"
             name="position"
             ref={firstRef}
           />
           <TextField
+            size="small"
             placeholder="Company name"
-            variant="standard"
+            variant="outlined"
             name="companyName"
             ref={firstRef}
           />
           <TextField
+            size="small"
             placeholder="Address"
-            variant="standard"
+            variant="outlined"
             name="address"
             ref={firstRef}
           />
           <TextField
+            size="small"
             placeholder="Phone"
             autoComplete="current-phone"
-            variant="standard"
+            variant="outlined"
             name="phone"
             ref={firstRef}
           />
           <TextField
+            size="small"
             placeholder="Email"
             type="email"
             autoComplete="current-email"
-            variant="standard"
+            variant="outlined"
             name="email"
             ref={firstRef}
           />
           <TextField
+            size="small"
             placeholder="Appload your logo"
             autoComplete="Website"
-            variant="standard"
+            variant="outlined"
             name="website"
             ref={firstRef}
+            sx={{ marginBottom: "50px" }}
           />
-          <Button
+          {/* <Button
             sx={{ display: "block", mt: 2, m: "auto" }}
             id="choose-button"
             type="submit"
             variant="outlined"
+          >
+            Submit
+          </Button> */}
+          <Button
+            style={{ marginTop: "20px" }}
+            size="large"
+            id="choose-button"
+            type="submit"
+            variant="contained"
+            sx={{
+              width: "250px",
+              height: "45px",
+              bgcolor: "#208E2B",
+              display: "block",
+              borderRadius: "20px",
+              mt: 5,
+              m: "auto",
+              transition: ".3s linear",
+              "&:hover": {
+                bgcolor: "brown",
+              },
+            }}
           >
             Submit
           </Button>
@@ -141,25 +177,32 @@ function VisaPage() {
       </Grid>
       <Grid item xs={11} md={6} className="right-box">
         <div className="right-header">
-          <h3>Melumatlarinizi daxil edin.</h3>
+          <h2 style={{ color: "#208E2B", marginBottom: "20px" }}>
+            Melumatlarinizi daxil edin.
+            <p> (Enter your details.)</p>
+          </h2>
         </div>
         <div>
           {/* <FormControl
            
             onSubmit={handleSelectSubmit}
           > */}
-          <InputLabel id="demo-controlled-open-select-label">
-            {" "}
-            Choose
+          <InputLabel
+            id="demo-controlled-open-select-label"
+            style={{ color: "#208E2B", marginBottom: "20px" }}
+          >
+            Seç.
+            <p>(Choose)</p>
           </InputLabel>
           <Select
+            size="small"
             labelId="demo-controlled-open-select-label"
             id="demo-controlled-open-select"
             label="Choose select"
             onChange={handleChange}
-            sx={{ m: 1, minWidth: 200 }}
+            sx={{ m: 1, minWidth: 400 }}
           >
-            <MenuItem value={0}>
+            <MenuItem selected value={null}>
               <em>None</em>
             </MenuItem>
             {/* <MenuItem >Card1</MenuItem>
@@ -173,24 +216,27 @@ function VisaPage() {
               );
             })}
           </Select>
-          {/* </FormControl> */}
         </div>
-        {/* <Grid item xs={11} md={11} className="template-button-box">
-          <Button
-            variant="outlined"
-            sx={{ display: "block", m: 2, marginLeft: 11 }}
-            id="choose-button"
-          >
-            Choose template
-          </Button>
-        </Grid> */}
-        {/* <Grid className="templateBox"
-        ref={ templateBox}
-        >
-          <div>template qutusu</div>
-        </Grid> */}
+
         <Grid>
-          {selectedCard == 0 && <VisitCard card={cards[0]} />}
+          {selectedCard == null && (
+            <Box
+              sx={{
+                width: 300,
+                height: 300,
+                backgroundColor: "#91E39D",
+                margin: "auto",
+                marginTop: "20px",
+                borderRadius: "20px",
+
+                "&:hover": {
+                  backgroundColor: "#208E2B",
+                  opacity: [0.9, 0.8, 0.7],
+                },
+              }}
+            />
+          )}
+          {selectedCard == 0 && <VisitCard card={cards[0]} width="300px" />}
           {selectedCard == 1 && <Card2 card={cards[1]} />}
           {selectedCard == 2 && <Card3 card3={cards[2]} />}
         </Grid>
