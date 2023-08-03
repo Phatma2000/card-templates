@@ -7,11 +7,14 @@
   /* display: flex;
   justify-content: space-around;
   margin: auto; */
+
+}
+/* .exampleBox{
   background-repeat: no-repeat;
   width:100%;
-  /* background-image: url('../../components/photos/istockphoto.jpg') !important; */
+   background-image: url('../../components/photos/istockphoto.jpg') !important; 
   background-size: cover;
-}
+} */
 .left-box {
   
  background-color: transparent; 

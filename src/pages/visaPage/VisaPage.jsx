@@ -14,7 +14,7 @@ import Store from "../../components/context/store";
 import VisitCard from "../../components/visitCard/VisitCard";
 import Card2 from "../../components/Cards/Card2/Card2";
 import Card3 from "../../components/Cards/Card3/Card3";
-import BgFoto from "../../components/photos/desktop-wallpaper.jpg";
+// import bgFoto from "../../components/photos/desktop-wallpaper.jpg";
 
 function VisaPage() {
   const { selectedCard, setSelectedCard, cards } = useContext(Store);
@@ -77,8 +77,7 @@ function VisaPage() {
           className="left-header"
           style={{ color: "#208E2B", marginBottom: "20px" }}
         >
-          Vizit kartı seçin.
-          <p>(Choose business card.)</p>
+          Choose business car
         </h2>
         <Box
           onSubmit={handleSubmit}
@@ -177,10 +176,9 @@ function VisaPage() {
       </Grid>
       <Grid item xs={11} md={6} className="right-box">
         <div className="right-header">
-          <h2 style={{ color: "#208E2B", marginBottom: "20px" }}>
-            Melumatlarinizi daxil edin.
-            <p> (Enter your details.)</p>
-          </h2>
+          <h2 style={{ color: "#208E2B", marginBottom: "20px" }}>Choose business card </h2>
+           
+         
         </div>
         <div>
           {/* <FormControl
@@ -220,21 +218,41 @@ function VisaPage() {
 
         <Grid>
           {selectedCard == null && (
-            <Box
+            <>
+            <Box 
               sx={{
-                width: 300,
-                height: 300,
-                backgroundColor: "#91E39D",
+                width: 400,
+                height: 230,
+                // backgroundImage:`url('${bgFoto}')`,
                 margin: "auto",
                 marginTop: "20px",
                 borderRadius: "20px",
-
+                backgroundColor: "#ECECEC",
                 "&:hover": {
-                  backgroundColor: "#208E2B",
+                  backgroundColor: "#D5D5D5",
                   opacity: [0.9, 0.8, 0.7],
                 },
-              }}
-            />
+              }}  
+           />
+           <Box 
+              sx={{
+                width: 400,
+                height: 230,
+                // backgroundImage:`url('${bgFoto}')`,
+                margin: "auto",
+                marginTop: "20px",
+                borderRadius: "20px",
+                backgroundColor:  "#ECECEC",
+                "&:hover": {
+                  backgroundColor: "#D5D5D5",
+                  opacity: [0.9, 0.8, 0.7],
+                },
+              }}  
+           />
+           
+            
+            </>
+            
           )}
           {selectedCard == 0 && <VisitCard card={cards[0]} width="300px" />}
           {selectedCard == 1 && <Card2 card={cards[1]} />}
