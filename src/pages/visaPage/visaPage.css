@@ -4,22 +4,28 @@
   box-sizing: border-box;
 }
 .visaPageBox {
-  display: flex;
+  /* display: flex;
   justify-content: space-around;
-  margin: auto;
-  margin-top: 20px;
-  
+  margin: auto; */
+
 }
+/* .exampleBox{
+  background-repeat: no-repeat;
+  width:100%;
+   background-image: url('../../components/photos/istockphoto.jpg') !important; 
+  background-size: cover;
+} */
 .left-box {
- 
-  background-color: rgb(223, 237, 232);
+  
+ background-color: transparent; 
   width: 100%;
   text-align: center;
 }
 .right-box {
-  background-color: rgb(251, 245, 235);
+  background-color: transparent; 
   width: 100%;
   text-align: center;
+
 }
 .left-header {
   margin-top: 20px;
@@ -31,6 +37,7 @@
   display: flex;
   justify-content: center;
   margin: auto;
+ 
  
 }
 .templateBox {
