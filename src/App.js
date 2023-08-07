@@ -2,9 +2,8 @@ import "./App.css";
 import FrontFoto from "./components/photos/FrontFoto192.png";
 import BackFoto from "./components/photos/BackFoto192.png";
 import Logo from "./components/photos/logo1.svg";
-import VisaPage from "../src/pages/visaPage/VisaPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import VisitCard from "./components/visitCard/VisitCard";
+import VisaPage from "../src/pages/visaPage/VisaPage"
 import Store from "./components/context/store";
 import { useState } from "react";
 import {
@@ -13,10 +12,13 @@ import {
   FaLocationDot,
   FaPhone,
 } from "react-icons/fa6";
-import Card2 from "./components/Cards/Card2/Card2";
+import Card2 from "./components/Cards/Card2/Card2"; 
 import Card3 from "./components/Cards/Card3/Card3";
+import VisitCard from "./components/visitCard/VisitCard";
+
 function App() {
-  const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(0);
+  const [cardData, setCardData] = useState([]);
 
   const cards = [
     {
@@ -40,7 +42,7 @@ function App() {
         divClassName: "company-info",
         cardHolderName: "card-holder-name1",
         cardHolderNameText: `THOMAS`,
-        cardHolderSurNameText: "THMIS",
+        cardHolderSurNameText: "SMITH",
         cardHolderOccupation: "span-text",
         cardHolderOccupationText: "occupation",
         cardHolderOccupationDescription: "Graphic Designer",
@@ -107,7 +109,7 @@ function App() {
         companyNameText: "Design",
         companyNameSlogan: "slogan1",
         companyNameSloganText: "Tagline space",
-        companyNameLoremText: "down-part-lorem",
+        companyNameLoremText: "down-part-lorem2",
         companyNameLoremTextContent: "Lorem Ipsum Dolor",
       },
 

@@ -6,7 +6,7 @@ import Logo from "../Card2/Logo.svg";
 //css
 import "./Card2.css";
 
-const Card2 = ({ card }) => {
+const Card2 = ({ card, cardData }) => {
   return (
     <>
       {/* first card */}
@@ -22,13 +22,19 @@ const Card2 = ({ card }) => {
         <div className="design-div">
           <img className="logo-img" src={Logo} alt="fd" />
           <h3 className={card.firstCardContent.companyName}>
-            {card.firstCardContent.companyNameText}
+            {cardData.companyName
+              ? cardData.companyName
+              : card.firstCardContent.companyNameText}
           </h3>
           <p className={card.firstCardContent.companyNameSlogan}>
-            {card.firstCardContent.companyNameSloganText}
+            {cardData.companySlogan
+              ? cardData.companySlogan
+              : card.firstCardContent.companyNameSloganText}
           </p>
           <p className={card.firstCardContent.companyNameLoremText}>
-            {card.firstCardContent.companyNameLoremTextContent}
+            {cardData.description
+              ? cardData.description
+              : card.firstCardContent.companyNameLoremTextContent }
           </p>
         </div>
         <p className="down-part-lorem"></p>
@@ -48,14 +54,20 @@ const Card2 = ({ card }) => {
         <div className="company-info">
           <div className={card.secondCardContent.flexClassName}>
             <h2 className={card.secondCardContent.cardHolderName}>
-              {card.secondCardContent.cardHolderNameText}
+              {cardData.name
+                ? cardData.name
+                : card.secondCardContent.cardHolderNameText}
             </h2>
             <span className={card.secondCardContent.cardHolderSurname}>
-              {card.secondCardContent.cardHolderSurnameText}
+              {cardData.surname
+                ? cardData.surname
+                : card.secondCardContent.cardHolderSurnameText}
             </span>
           </div>
           <p className={card.secondCardContent.cardHolderOccupation}>
-            {card.secondCardContent.cardHolderOccupationText}
+            {cardData.position
+              ? cardData.position
+              : card.secondCardContent.cardHolderOccupationText}
           </p>
         </div>
         <div className="address-div">

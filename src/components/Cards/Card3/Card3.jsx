@@ -5,7 +5,7 @@ import "./Card3.css";
 import CardFirst from "../Card3/CardFirst.png";
 import CardSecond from "../Card3/CardSecond.png";
 import CardLogo from "../Card3/CardLogo.svg";
-const Card = ({ card3 }) => {
+const Card3 = ({ card3, cardData }) => {
   return (
     <>
       <div className="cards">
@@ -23,13 +23,19 @@ const Card = ({ card3 }) => {
           <div className="text-general">
             <img src={CardLogo} alt="" className="card-logo" />
             <h1 className={card3.firstCardContent.companyName}>
-              {card3.firstCardContent.companyNameText}
+              {cardData.companyName
+                ? cardData.companyName
+                : card3.firstCardContent.companyNameText}
             </h1>
             <h5 className={card3.firstCardContent.companyNameSlogan}>
-              {card3.firstCardContent.companyNameSloganText}
+              {cardData.companySlogan
+                ? cardData.companySlogan
+                : card3.firstCardContent.companyNameSloganText}
             </h5>
             <p className={card3.firstCardContent.companyNameLorem}>
-              {card3.firstCardContent.companyNameLoremText}
+              {cardData.description
+                ? cardData.description
+                : card3.firstCardContent.companyNameLoremText}
             </p>
           </div>
         </div>
@@ -47,14 +53,20 @@ const Card = ({ card3 }) => {
           <div className="name-div">
             <div className={card3.secondCardContent.divClassName}>
               <h2 className={card3.secondCardContent.cardHolderName}>
-                {card3.secondCardContent.cardHolderNameText}
+                {cardData.name
+                  ? cardData.name
+                  : card3.secondCardContent.cardHolderNameText}
               </h2>
               <h2 className={card3.secondCardContent.cardHolderSurname}>
-                {card3.secondCardContent.cardHolderSurnameText}
+                {cardData.surname
+                  ? cardData.surname
+                  : card3.secondCardContent.cardHolderSurNameText}
               </h2>
             </div>
             <p className={card3.secondCardContent.cardHolderOccupation}>
-              {card3.secondCardContent.cardHolderOccupationText}
+              {cardData.position
+                ? cardData.position
+                : card3.secondCardContent.cardHolderOccupationText}
             </p>
           </div>
 
@@ -87,4 +99,4 @@ const Card = ({ card3 }) => {
   );
 };
 
-export default Card;
+export default Card3;

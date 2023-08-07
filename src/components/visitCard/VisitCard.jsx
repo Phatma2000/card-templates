@@ -5,9 +5,7 @@ import "./visitCard.css";
 
 // CUSTOM IMPORTS
 
-
-const VisitCard = ({ card }) => {
-  console.log(card.firstCardContent.firstCardLogo);
+const VisitCard = ({ card, cardData, animateCard1 }) => {
   return (
     <div>
       <div className="box">
@@ -18,7 +16,6 @@ const VisitCard = ({ card }) => {
             backgroundImage: `url(${card.firstCardContent.backGroundImage})`,
           }}
         >
-         
           <div className={card.firstCardContent.cardDesign}>
             <div className={card.firstCardContent.LogoBox}>
               <img
@@ -28,21 +25,30 @@ const VisitCard = ({ card }) => {
               />
             </div>
             <div>
-            <div className={card.firstCardContent.companyName}>
-                <h1 className={card.firstCardContent.companyNameStyle}>
-                  {card.firstCardContent.companyNameText}
+              <div className={card.firstCardContent.companyName}>
+                <h1
+                  className={`
+                    ${card.firstCardContent.companyNameStyle}
+              ${animateCard1 ? "company-name-animate" : ""}
+                  `}
+                >
+                  {cardData.companyName
+                    ? cardData.companyName.slice(0, 10)
+                    : card.firstCardContent.companyNameText}
                 </h1>
                 <p className={card.firstCardContent.companyNameSlogan}>
                   {" "}
-                  {card.firstCardContent. companyNameSloganText}
+                  {cardData.companySlogan
+                    ? cardData.companySlogan
+                    : card.firstCardContent.companyNameSloganText}
                 </p>
-            </div>
+              </div>
             </div>
           </div>
           <div className={card.firstCardContent.companyNameLoremTextBox}>
-          <p className={card.firstCardContent.companyNameLoremText}>
-                {card.firstCardContent.companyNameLoremContext}
-              </p>
+            <p className={card.firstCardContent.companyNameLoremText}>
+              {card.firstCardContent.companyNameLoremContext}
+            </p>
           </div>
         </div>
 
@@ -70,7 +76,9 @@ const VisitCard = ({ card }) => {
               {card.contactList.map((i) => {
                 return (
                   <div key={i.id}>
-                    <p style={i?.customStyle || {}}>{i.text}</p>
+                    <p style={i?.customStyle || {}}>
+                      {cardData.address ? cardData.address : i.text}
+                    </p>
                   </div>
                 );
               })}
@@ -79,22 +87,30 @@ const VisitCard = ({ card }) => {
 
           <div>
             <p className={card.secondCardContent.cardHolderName}>
-              {card.secondCardContent. cardHolderNameText}
+              {cardData.name
+                ? cardData.name
+                : card.secondCardContent.cardHolderNameText}
             </p>
             <b>
               {" "}
-              <span className={card.secondCardContent. cardHolderSurNameText}>
-                {card.secondCardContent. cardHolderSurNameText}
+              <span className={card.secondCardContent.cardHolderSurNameText}>
+                {cardData.surname
+                  ? cardData.surname
+                  : card.secondCardContent.cardHolderSurNameText}
               </span>
             </b>
             <p className={card.secondCardContent.cardHolderOccupation}>
-              {card.secondCardContent.cardHolderOccupationDescription}
+              {cardData.position
+                ? cardData.position
+                : card.secondCardContent.cardHolderOccupationDescription}
             </p>
           </div>
         </div>
       </div>
+    
     </div>
   );
 };
+
 
 export default VisitCard;
