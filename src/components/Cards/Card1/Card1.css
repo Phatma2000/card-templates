@@ -10,10 +10,10 @@
   align-items: center;
   justify-content: center;
   margin: auto;
-  gap: 30px;
+  gap: 20px;
   /* width: 40%; */
   height: auto;
-  padding: 20px;
+  padding-top: 20px;
 }
 .background {
   margin: auto;
@@ -24,7 +24,6 @@
   color: #272623;
   transform: translate(-3px, 143px);
   font-size: 12px;
-  
 }
 /* .down-part-website{
   font-weight: 800;
@@ -35,7 +34,7 @@
   letter-spacing: 2px;
   max-width: 300px;
   overflow: hidden;
-} 
+}
 
 .company-name-animate {
   animation: companyNameAnim 1s linear;
@@ -44,7 +43,8 @@
 @keyframes companyNameAnim {
   from {
     max-width: 0px;
-  } to {
+  }
+  to {
     max-width: 300px;
   }
 }
@@ -53,7 +53,6 @@
   font-size: 7px;
   letter-spacing: 4px;
   margin-top: 4px;
-  
 }
 .icon-group {
   color: orange;
@@ -78,7 +77,7 @@
   text-align: left;
 }
 
-.icon-information1 > div >div {
+.icon-information1 > div > div {
   padding: 0px;
 }
 
@@ -87,18 +86,16 @@
   width: 400px;
   height: 230px;
   margin: auto;
-  box-shadow: 10px 10px 20px;
+  box-shadow: 1px 4px 9px;
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
   padding-bottom: 10px;
   border-radius: 15px;
- 
 }
 .information-box {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
 }
 .company-name {
   display: flex;
@@ -116,7 +113,7 @@
   background-size: cover;
   width: 400px;
   height: 230px;
-  box-shadow: 10px 10px 20px;
+  box-shadow: 1px 4px 9px;
   border-radius: 15px;
 }
 .first-card-design {
@@ -127,31 +124,31 @@
   height: 70px;
   align-items: center;
   margin-top: 30px;
-
 }
-.firstCardLogo{
-    width: 50px;
-    height: auto;
+.firstCardLogo {
+  width: 50px;
+  height: auto;
 }
-.item-text{
-  font-weight:800;
+.item-text {
+  font-weight: 800;
 }
-.card-holder-name1{
- display:inline-block;
+.card-holder-name1 {
+  display: inline-block;
+  margin-right: 8px;
 }
-.span-text{
+.span-text {
   font-weight: 700;
   font-size: 16px;
 }
-.card-first-card-logo-box{
+.card-first-card-logo-box {
   width: 140px;
   text-align: center;
 }
-.card-first-card-logo{
-width: 50px;
+.card-first-card-logo {
+  width: 50px;
+  margin-right: 10px;
 }
 .lorem {
-
   font-size: 11px;
   letter-spacing: 1px;
   font-weight: bold;
@@ -160,5 +157,4 @@ width: 50px;
   align-self: flex-end;
   margin-top: 95px;
   margin-right: 18px;
-
-} 
+}

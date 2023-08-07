@@ -3,7 +3,7 @@ import React, { useContext, useState, useRef } from "react";
 //Assets
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import "./visaPage.css";
+import "./Form.css";
 import { Grid } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -12,12 +12,13 @@ import Button from "@mui/material/Button";
 import Store from "../../components/context/store";
 import Card2 from "../../components/Cards/Card2/Card2";
 import Card3 from "../../components/Cards/Card3/Card3";
-import VisitCard from "../../components/visitCard/VisitCard";
+import Card1 from "../../components/Cards/Card1/Card1";
 
 function Form() {
-  const { selectedCard, setSelectedCard, cards } = useContext(Store);
+  const { cardData, setCardData,selectedCard, setSelectedCard, cards } =
+    useContext(Store);
   const [animateCard1, setAnimateCard1] = useState(false);
-  const [cardData, setCardData] = useState([]);
+
   const [selectData, setSelectData] = useState([]);
   const firstRef = useRef();
   const card1Ref = useRef();
@@ -63,6 +64,84 @@ function Form() {
     }, 2000);
   };
 
+  const fieldInfo = [
+    {
+      name: "name",
+      size: "small",
+      variant: "outlined",
+      placeholder: "Name",
+      ref: { firstRef },
+    },
+    {
+      name: "surname",
+      size: "small",
+      variant: "outlined",
+      placeholder: "Surname",
+      ref: { firstRef },
+    },
+    {
+      name: "position",
+      size: "small",
+      variant: "outlined",
+      placeholder: "Position",
+      ref: { firstRef },
+    },
+    {
+      name: "companyName",
+      size: "small",
+      variant: "outlined",
+      placeholder: "Company name",
+      ref: { firstRef },
+    },
+    {
+      name: "companySlogan",
+      size: "small",
+      variant: "outlined",
+      placeholder: "Slogan",
+      ref: { firstRef },
+    },
+    {
+      name: "description",
+      size: "small",
+      variant: "outlined",
+      placeholder: "Description",
+      ref: { firstRef },
+    },
+    {
+      name: "address",
+      size: "small",
+      variant: "outlined",
+      placeholder: "Address",
+      ref: { firstRef },
+    },
+    {
+      name: "phone",
+      size: "small",
+      variant: "outlined",
+      placeholder: "Phone",
+      ref: { firstRef },
+      autoComplete: "current-phone",
+    },
+    {
+      name: "email",
+      size: "small",
+      variant: "outlined",
+      placeholder: "Email",
+      ref: { firstRef },
+      autoComplete: "current-email",
+      type: "email",
+    },
+    {
+      name: "website",
+      size: "small",
+      variant: "outlined",
+      placeholder: "Website",
+      ref: { firstRef },
+      autoComplete: "Website",
+    },
+    
+  ];
+
   console.log(cardData);
 
   const handleChange = (e) => {
@@ -78,7 +157,7 @@ function Form() {
           className="left-header"
           style={{ color: "#208E2B", marginBottom: "20px" }}
         >
-          Choose business car
+          Choose business card
         </h2>
         <Box
           onSubmit={handleSubmit}
@@ -89,82 +168,15 @@ function Form() {
           noValidate
           autoComplete="off"
         >
-          <TextField
-            size="small"
-            variant="outlined"
-            placeholder="Name"
-            name="name"
-            ref={firstRef}
-          />
-          <TextField
-            size="small"
-            variant="outlined"
-            placeholder="Surname"
-            name="surname"
-            ref={firstRef}
-          />
-          <TextField
-            size="small"
-            placeholder="Position "
-            variant="outlined"
-            name="position"
-            ref={firstRef}
-          />
-          <TextField
-            size="small"
-            placeholder="Company name"
-            variant="outlined"
-            name="companyName"
-            ref={firstRef}
-          />
-          <TextField
-            size="small"
-            placeholder="Slogan"
-            variant="outlined"
-            name="companySlogan"
-            ref={firstRef}
-          />
-          <TextField
-            size="small"
-            placeholder="Description"
-            variant="outlined"
-            name="description"
-            ref={firstRef}
-          />
-
-          <TextField
-            size="small"
-            placeholder="Address"
-            variant="outlined"
-            name="address"
-            ref={firstRef}
-          />
-          <TextField
-            size="small"
-            placeholder="Phone"
-            autoComplete="current-phone"
-            variant="outlined"
-            name="phone"
-            ref={firstRef}
-          />
-          <TextField
-            size="small"
-            placeholder="Email"
-            type="email"
-            autoComplete="current-email"
-            variant="outlined"
-            name="email"
-            ref={firstRef}
-          />
-          <TextField
-            size="small"
-            placeholder="Appload your logo"
-            autoComplete="Website"
-            variant="outlined"
-            name="website"
-            ref={firstRef}
-            sx={{ marginBottom: "50px" }}
-          />
+          {fieldInfo.map((field) => (
+            <TextField
+              name={field.name}
+              size={field.size}
+              variant={field.variant}
+              placeholder={field.placeholder}
+              type={field.type}
+            />
+          ))}
 
           <Button
             style={{ marginTop: "20px" }}
@@ -259,7 +271,7 @@ function Form() {
             </>
           )}
           {selectedCard == 0 && (
-            <VisitCard
+            <Card1
               card={cards[0]}
               cardData={cardData}
               width="300px"

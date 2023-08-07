@@ -56,11 +56,13 @@
 .card-holder-namee {
   color: #2699b2;
   margin-right: 10px;
+  font-size: 15px;
 }
 
 .card-holder-surnamee {
   color: #2699b2;
   opacity: 0.5;
+  font-size: 15px;
 }
 
 .project-manager {

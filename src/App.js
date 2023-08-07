@@ -1,9 +1,9 @@
 import "./App.css";
-import FrontFoto from "./components/photos/FrontFoto192.png";
-import BackFoto from "./components/photos/BackFoto192.png";
-import Logo from "./components/photos/logo1.svg";
+import FrontFoto from "./components/Cards/Card1/FrontFoto192.png";
+import BackFoto from "./components/Cards/Card1/BackFoto192.png";
+import Logo from "./components/Cards/Card1/logo1.svg";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import VisaPage from "../src/pages/visaPage/VisaPage"
+import VisaPage from "./pages/Form/Form";
 import Store from "./components/context/store";
 import { useState } from "react";
 import {
@@ -12,9 +12,9 @@ import {
   FaLocationDot,
   FaPhone,
 } from "react-icons/fa6";
-import Card2 from "./components/Cards/Card2/Card2"; 
+import Card1 from "./components/Cards/Card1/Card1";
+import Card2 from "./components/Cards/Card2/Card2";
 import Card3 from "./components/Cards/Card3/Card3";
-import VisitCard from "./components/visitCard/VisitCard";
 
 function App() {
   const [selectedCard, setSelectedCard] = useState(0);
@@ -122,6 +122,7 @@ function App() {
         cardHolderOccupation: "cofounder-p",
         cardHolderOccupationText: "Co-Founder Brand Name",
         flexClassName: "flex",
+        foncticonClassName: "fonticon"
       },
 
       addressText: [
@@ -252,13 +253,15 @@ function App() {
         <Card3 key={i} card3={item} />
       ))} */}
 
-      <Store.Provider value={{ selectedCard, setSelectedCard, cards }}>
+      <Store.Provider
+        value={{ selectedCard, setSelectedCard, cards, cardData, setCardData }}
+      >
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<VisaPage />} />
             <Route
               path="/visitCard"
-              element={<VisitCard card={cards[selectedCard]} />}
+              element={<Card1 card={cards[selectedCard]} />}
             />
             <Route path="/card2" element={<Card2 card={cards[1]} />}></Route>
             <Route path="/card3" element={<Card3 card3={cards[2]} />}></Route>

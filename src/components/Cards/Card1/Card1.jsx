@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 // ASSETS
-import "./visitCard.css";
+import "./Card1.css";
+import Store from "../../context/store";
 
 // CUSTOM IMPORTS
 
-const VisitCard = ({ card, cardData, animateCard1 }) => {
+const VisitCard = ({ card,  animateCard1 }) => {
+const {cardData} =useContext(Store)
   return (
     <div>
       <div className="box">
@@ -27,13 +29,9 @@ const VisitCard = ({ card, cardData, animateCard1 }) => {
             <div>
               <div className={card.firstCardContent.companyName}>
                 <h1
-                  className={`
-                    ${card.firstCardContent.companyNameStyle}
-              ${animateCard1 ? "company-name-animate" : ""}
-                  `}
                 >
                   {cardData.companyName
-                    ? cardData.companyName.slice(0, 10)
+                    ? cardData.companyName.slice(0, 15)
                     : card.firstCardContent.companyNameText}
                 </h1>
                 <p className={card.firstCardContent.companyNameSlogan}>
@@ -47,7 +45,9 @@ const VisitCard = ({ card, cardData, animateCard1 }) => {
           </div>
           <div className={card.firstCardContent.companyNameLoremTextBox}>
             <p className={card.firstCardContent.companyNameLoremText}>
-              {card.firstCardContent.companyNameLoremContext}
+              {cardData.description
+                ? cardData.description
+                : card.firstCardContent.companyNameLoremContext}
             </p>
           </div>
         </div>
@@ -73,15 +73,31 @@ const VisitCard = ({ card, cardData, animateCard1 }) => {
             </div>
 
             <div className={card.secondCardContent.iconInformation}>
-              {card.contactList.map((i) => {
-                return (
-                  <div key={i.id}>
-                    <p style={i?.customStyle || {}}>
-                      {cardData.address ? cardData.address : i.text}
+              {
+                <>
+                  <div key={card.contactList[0].id}>
+                    <p style={card.contactList[0].customStyle || {}}>
+                      {cardData?.address}
                     </p>
                   </div>
-                );
-              })}
+                  <div key={card.contactList[1].id}>
+                    <p style={card.contactList[1].customStyle || {}}>
+                      {cardData?.phone}
+                    </p>
+                  </div>{" "}
+                  <div key={card.contactList[0].id}>
+                    <p style={card.contactList[0].customStyle || {}}>
+                      {cardData?.email}
+                    </p>
+                  </div>{" "}
+                  <div key={card.contactList[0].id}>
+                    <p style={card.contactList[0].customStyle || {}}>
+                      {cardData?.website}
+                    </p>
+                  </div>{" "}
+            
+                </>
+              }
             </div>
           </div>
 
@@ -107,7 +123,6 @@ const VisitCard = ({ card, cardData, animateCard1 }) => {
           </div>
         </div>
       </div>
-    
     </div>
   );
 };

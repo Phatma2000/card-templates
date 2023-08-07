@@ -60,7 +60,7 @@ const Card3 = ({ card3, cardData }) => {
               <h2 className={card3.secondCardContent.cardHolderSurname}>
                 {cardData.surname
                   ? cardData.surname
-                  : card3.secondCardContent.cardHolderSurNameText}
+                  : card3.secondCardContent.cardHolderSurnameText}
               </h2>
             </div>
             <p className={card3.secondCardContent.cardHolderOccupation}>

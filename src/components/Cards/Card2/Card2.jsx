@@ -34,7 +34,7 @@ const Card2 = ({ card, cardData }) => {
           <p className={card.firstCardContent.companyNameLoremText}>
             {cardData.description
               ? cardData.description
-              : card.firstCardContent.companyNameLoremTextContent }
+              : card.firstCardContent.companyNameLoremTextContent}
           </p>
         </div>
         <p className="down-part-lorem"></p>
@@ -86,6 +86,8 @@ const Card2 = ({ card, cardData }) => {
             {card.addressText.map((v) => {
               return (
                 <>
+
+                
                   <div key={v.id} />
                   <p className={v.className}>{v.text}</p>
                 </>
