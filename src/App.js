@@ -1,7 +1,15 @@
 import "./App.css";
+//card1
 import FrontFoto from "./components/Cards/Card1/FrontFoto192.png";
 import BackFoto from "./components/Cards/Card1/BackFoto192.png";
 import Logo from "./components/Cards/Card1/logo1.svg";
+// card2
+import FirstCard from "./components/Cards/Card2/FirstCard.png"
+import SecondCard from "./components/Cards/Card2/SecondCard.png";
+//card3
+import CardFirst from "../src/components/Cards/Card3/CardFirst.png"
+import CardSecond from "../src/components/Cards/Card3/CardSecond.png";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import VisaPage from "./pages/Form/Form";
 import Store from "./components/context/store";
@@ -15,30 +23,34 @@ import {
 import Card1 from "./components/Cards/Card1/Card1";
 import Card2 from "./components/Cards/Card2/Card2";
 import Card3 from "./components/Cards/Card3/Card3";
+import { Button } from "@mui/material";
 
 function App() {
   const [selectedCard, setSelectedCard] = useState(0);
   const [cardData, setCardData] = useState([]);
 
+  
   const cards = [
     {
       firstCardContent: {
-        companyName: "company-name",
+        firstCard: "first-card",
+        backGroundImage: `../..${FrontFoto}`,
+        companyName: "company-name3",
         companyNameStyle: "company-name-design",
         companyNameText: "Media",
         companyNameSlogan: "company-name-slogan",
         companyNameSloganText: "SLOGANHERE",
         companyNameLoremText: "lorem",
         companyNameLoremContext: "lorem ipsum dolor",
-        backGroundImage: `../..${FrontFoto}`,
         cardDesign: "first-card-design",
-        firstCard: "first-card",
         LogoContent: `../..${Logo}`,
         cardLogo: "card-first-card-logo",
         LogoBox: "card-first-card-logo-box",
         companyNameLoremTextBox: "company-name-lorem-text-box",
       },
       secondCardContent: {
+        secondCard: "second-card",
+        backGroundImage: `../..${BackFoto}`,
         divClassName: "company-info",
         cardHolderName: "card-holder-name1",
         cardHolderNameText: `THOMAS`,
@@ -46,11 +58,9 @@ function App() {
         cardHolderOccupation: "span-text",
         cardHolderOccupationText: "occupation",
         cardHolderOccupationDescription: "Graphic Designer",
-        backGroundImage: `../..${BackFoto}`,
         informationBox: "information-box",
         iconGroup: "icon-group",
         iconInformation: "icon-information1",
-        secondCard: "second",
       },
       contactList: [
         {
@@ -105,6 +115,8 @@ function App() {
 
     {
       firstCardContent: {
+        firstCard: "first-card2",
+        backGroundImage: `../..${FirstCard}`,
         companyName: "company-name",
         companyNameText: "Design",
         companyNameSlogan: "slogan1",
@@ -114,6 +126,8 @@ function App() {
       },
 
       secondCardContent: {
+        secondCard: "second-card2",
+        backGroundImage: `../..${SecondCard}`,
         DivclassName: "company-info",
         cardHolderName: "card-holder-name",
         cardHolderNameText: "MARK",
@@ -122,7 +136,7 @@ function App() {
         cardHolderOccupation: "cofounder-p",
         cardHolderOccupationText: "Co-Founder Brand Name",
         flexClassName: "flex",
-        foncticonClassName: "fonticon"
+        foncticonClassName: "fonticon",
       },
 
       addressText: [
@@ -252,7 +266,11 @@ function App() {
       {cards3.map((item, i) => (
         <Card3 key={i} card3={item} />
       ))} */}
-
+      {/* <Button variant="contained" component="label">
+        Upload File
+        <input type="file" hidden />
+      </Button> */}
+      
       <Store.Provider
         value={{ selectedCard, setSelectedCard, cards, cardData, setCardData }}
       >
@@ -264,7 +282,7 @@ function App() {
               element={<Card1 card={cards[selectedCard]} />}
             />
             <Route path="/card2" element={<Card2 card={cards[1]} />}></Route>
-            <Route path="/card3" element={<Card3 card3={cards[2]} />}></Route>
+            <Route path="/card3" element={<Card3 card={cards[2]} />}></Route>
           </Routes>
         </BrowserRouter>
       </Store.Provider>

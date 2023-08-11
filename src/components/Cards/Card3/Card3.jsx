@@ -10,14 +10,13 @@ const Card3 = ({ card3, cardData }) => {
     <>
       <div className="cards">
         <div
-          className="firstt-card"
+          className="first-card3"
           style={{
             background: `url(${CardFirst})`,
             width: "400px",
             height: "230px",
             backgroundSize: "cover",
             margin: "auto",
-            marginTop: "20px",
           }}
         >
           <div className="text-general">
@@ -40,14 +39,13 @@ const Card3 = ({ card3, cardData }) => {
           </div>
         </div>
         <div
-          className="second-card"
+          className="second-card3"
           style={{
             background: `url(${CardSecond})`,
             width: "400px",
             height: "230px",
             backgroundSize: "cover",
             margin: "auto",
-            marginTop: "20px",
           }}
         >
           <div className="name-div">
@@ -82,7 +80,7 @@ const Card3 = ({ card3, cardData }) => {
               })}
             </div>
 
-            <div className="address-text">
+            {/* <div className="address-text">
               {card3.addressText.map((i) => {
                 return (
                   <>
@@ -91,6 +89,18 @@ const Card3 = ({ card3, cardData }) => {
                   </>
                 );
               })}
+
+            </div> */}
+
+            <div>
+              <p className="location-text">
+                {cardData?.address ? cardData.address : card3.addressText[0].text}</p>
+              <p className="phone-text">
+                {cardData?.phone ? cardData.phone : card3.addressText[1].text } </p>
+              <p className="envelope-text">
+                {cardData?.email ? cardData.email : card3.addressText[2].text}</p>
+              <p className="arrow-text">
+                {cardData?.website ? cardData.website : card3.addressText[3].text}</p>
             </div>
           </div>
         </div>

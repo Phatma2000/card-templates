@@ -11,10 +11,22 @@
   text-align: center;
 }
 
-.second-card {
+.second-card3 {
   display: flex;
   justify-content: space-around;
   padding-top: 80px;
+  width: 400px;
+  height: 230px;
+  background-size: cover;
+  margin: auto;
+  text-align: left;
+}
+
+.first-card3{
+  width: 400px;
+  height: 230px;
+  background-size: cover;
+  margin: auto;
 }
 
 .card-logo {
@@ -67,7 +79,7 @@
 
 .project-manager {
   color: #fff;
-  text-align: end;
+  text-align: center;
   font-size: 10px;
 }
 

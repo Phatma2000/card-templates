@@ -1,22 +1,18 @@
 import React from "react";
 //assets
-import FirstCard from "../Card2/FirstCard.png";
-import SecondCard from "../Card2/SecondCard.png";
 import Logo from "../Card2/Logo.svg";
 //css
 import "./Card2.css";
 
 const Card2 = ({ card, cardData }) => {
+  
   return (
-    <>
+    <div className="cards">
       {/* first card */}
       <div
-        className="background"
+        className={card.firstCardContent.firstCard}
         style={{
-          backgroundImage: `url(${FirstCard})`,
-          backgroundSize: "cover",
-          width: "400px",
-          height: "230px",
+         backgroundImage: `url(${card.firstCardContent.backGroundImage})`,
         }}
       >
         <div className="design-div">
@@ -42,13 +38,10 @@ const Card2 = ({ card, cardData }) => {
 
       {/* second card */}
       <div
-        className="background-second"
+        className={card.secondCardContent.secondCard}
         style={{
-          backgroundImage: `url(${SecondCard})`,
-          backgroundSize: "cover",
-          width: "400px",
-          height: "230px",
-          margin: "auto",
+          backgroundImage: `url(${card?.secondCardContent.backGroundImage})`,
+          
         }}
       >
         <div className="company-info">
@@ -82,7 +75,7 @@ const Card2 = ({ card, cardData }) => {
             })}
           </div>
 
-          <div className="fonticon">
+          {/* <div className="fonticon">
             {card.addressText.map((v) => {
               return (
                 <>
@@ -93,10 +86,24 @@ const Card2 = ({ card, cardData }) => {
                 </>
               );
             })}
+          </div> */}
+          <div>
+            <p className={card.addressText[0].className}>
+              {cardData.address ? cardData.address : card?.addressText[0].text}
+            </p>
+            <p className={card.addressText[1].className}>
+              {cardData.phone ? cardData.phone : card.addressText[1].text}
+            </p>
+            <p className={card.addressText[2].className}>
+              {cardData?.email ? cardData.email : card?.addressText[2].text}
+            </p>            
+            <p className={card.addressText[3].className}>
+              {cardData?.website ? cardData.website : card?.addressText[3].text}
+            </p>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

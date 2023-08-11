@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, forwardRef } from "react";
 
 //Assets
 import Box from "@mui/material/Box";
@@ -13,15 +13,19 @@ import Store from "../../components/context/store";
 import Card2 from "../../components/Cards/Card2/Card2";
 import Card3 from "../../components/Cards/Card3/Card3";
 import Card1 from "../../components/Cards/Card1/Card1";
+// import { useReactToPrint } from "react-to-print";
+import Print from "../../components/Print";
 
 function Form() {
-  const { cardData, setCardData,selectedCard, setSelectedCard, cards } =
+  const { cardData, setCardData, selectedCard, setSelectedCard, cards, selectedFile, setSelectedFile,} = 
     useContext(Store);
   const [animateCard1, setAnimateCard1] = useState(false);
 
-  const [selectData, setSelectData] = useState([]);
+  // const [selectData, setSelectData] = useState([]);
   const firstRef = useRef();
-  const card1Ref = useRef();
+  // const card1Ref = useRef();
+  const frontComponentRef = useRef();
+
   // Array(100).fill(null).map
   const [cardList, setCardList] = useState([
     {
@@ -39,6 +43,7 @@ function Form() {
   ]);
   const [message, setMessage] = useState("");
   const templateBox = useRef(null);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -139,150 +144,204 @@ function Form() {
       ref: { firstRef },
       autoComplete: "Website",
     },
-    
   ];
-
-  console.log(cardData);
 
   const handleChange = (e) => {
     let id = e.target.value;
     setSelectedCard(id);
-    console.log(e.target.value);
   };
 
+    // const handleSubmitt = (event) => {
+    //   event.preventDefault();
+    //   if (selectedFile) {
+    //     onImageUpload(selectedFile);
+    //   }
+    // };
+  //  const fileInputRef = useRef(null)
+
+  //  const handleLabelClick = () => {
+  //   fileInputRef.current.click()
+  //  };
+
+
+
+  // const handlePrint =  useReactToPrint({
+  //   content: () => componentRef.current,
+  //   documentTitle: "emp-data",
+  //   onAfterPrint: () => alert("Print Success")
+  // });
+
+  
+
+
   return (
-    <Grid container className="visaPageBox">
-      <Grid item xs={11} md={6} className="left-box">
-        <h2
-          className="left-header"
-          style={{ color: "#208E2B", marginBottom: "20px" }}
-        >
-          Choose business card
-        </h2>
-        <Box
-          onSubmit={handleSubmit}
-          component="form"
-          sx={{
-            "& .MuiTextField-root": { m: 1, width: "50ch" },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          {fieldInfo.map((field) => (
-            <TextField
-              name={field.name}
-              size={field.size}
-              variant={field.variant}
-              placeholder={field.placeholder}
-              type={field.type}
-            />
-          ))}
+    <>
+      <div>
+        <Grid container className="visaPageBox">
+          <Grid item xs={11} md={6} className="left-box">
+            <h2
+              className="left-header"
+              style={{ color: "#208E2B", marginBottom: "20px" }}
+            >
+              Add your information
+            </h2>
+            <Box
+              onSubmit={handleSubmit}
+              component="form"
+              sx={{
+                "& .MuiTextField-root": { m: 1, width: "50ch" },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              {fieldInfo.map((field) => (
+                <TextField
+                  name={field.name}
+                  size={field.size}
+                  variant={field.variant}
+                  placeholder={field.placeholder}
+                  type={field.type}
+                />
+              ))}
 
-          <Button
-            style={{ marginTop: "20px" }}
-            size="large"
-            id="choose-button"
-            type="submit"
-            variant="contained"
-            sx={{
-              width: "250px",
-              height: "45px",
-              bgcolor: "#208E2B",
-              display: "block",
-              borderRadius: "20px",
-              mt: 5,
-              m: "auto",
-              transition: ".3s linear",
-              "&:hover": {
-                bgcolor: "brown",
-              },
-            }}
-          >
-            Submit
-          </Button>
-        </Box>
-      </Grid>
-      <Grid item xs={11} md={6} className="right-box">
-        <div className="right-header">
-          <h2 style={{ color: "#208E2B", marginBottom: "20px" }}>
-            Choose business card{" "}
-          </h2>
-        </div>
-        <div>
-          <InputLabel
-            id="demo-controlled-open-select-label"
-            style={{ color: "#208E2B", marginBottom: "20px" }}
-          >
-            Seç.
-            <p>(Choose)</p>
-          </InputLabel>
-          <Select
-            size="small"
-            labelId="demo-controlled-open-select-label"
-            id="demo-controlled-open-select"
-            label="Choose select"
-            onChange={handleChange}
-            sx={{ m: 1, minWidth: 400 }}
-          >
-            <MenuItem selected value={null}>
-              <em>None</em>
-            </MenuItem>
-            {cardList.map((item, index) => {
-              return (
-                <MenuItem key={item + index} value={index}>
-                  {item.projectName}{" "}
+              {/* <div> 
+             <label onClick={handleLabelClick} htmlFor="upload">upload photo
+             <input type="file" style={{display:"none"}} />
+             </label>
+            
+           
+             
+          </div> */}
+
+          <form action="" >
+
+              <input type="file"  />
+          </form>
+              <Button
+                style={{ marginTop: "20px" }}
+                size="large"
+                id="choose-button"
+                type="submit"
+                variant="contained"
+                sx={{
+                  width: "250px",
+                  height: "45px",
+                  bgcolor: "#208E2B",
+                  display: "block",
+                  borderRadius: "20px",
+                  mt: 5,
+                  m: "auto",
+                  transition: ".3s linear",
+                  "&:hover": {
+                    bgcolor: "brown",
+                  },
+                }}
+              >
+                Submit
+              </Button>
+            </Box>
+          </Grid>
+
+          <Grid item xs={11} md={6} className="right-box">
+            <div className="right-header">
+              <h2 style={{ color: "#208E2B", marginBottom: "20px" }}>
+                Choose business card{" "}
+              </h2>
+            </div>
+            <div>
+              {/* <InputLabel
+                id="demo-controlled-open-select-label"
+                style={{ color: "#208E2B", marginBottom: "20px" }}
+              >
+                Seç.
+                <p>(Choose)</p>
+              </InputLabel> */}
+              <Select
+                size="small"
+                labelId="demo-controlled-open-select-label"
+                id="demo-controlled-open-select"
+                label="Choose select"
+                onChange={handleChange}
+                sx={{ m: 1, minWidth: 400 }}
+              >
+                <MenuItem selected value={null}>
+                  <em>None</em>
                 </MenuItem>
-              );
-            })}
-          </Select>
-        </div>
+                {cardList.map((item, index) => {
+                  return (
+                    <MenuItem key={item + index} value={index}>
+                      {item.projectName}{" "}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </div>
 
-        <Grid>
-          {selectedCard == null && (
-            <>
-              <Box
-                sx={{
-                  width: 400,
-                  height: 230,
-                  margin: "auto",
-                  marginTop: "20px",
-                  borderRadius: "20px",
-                  backgroundColor: "#ECECEC",
-                  "&:hover": {
-                    backgroundColor: "#D5D5D5",
-                    opacity: [0.9, 0.8, 0.7],
-                  },
-                }}
-              />
-              <Box
-                sx={{
-                  width: 400,
-                  height: 230,
-                  margin: "auto",
-                  marginTop: "20px",
-                  borderRadius: "20px",
-                  backgroundColor: "#ECECEC",
-                  "&:hover": {
-                    backgroundColor: "#D5D5D5",
-                    opacity: [0.9, 0.8, 0.7],
-                  },
-                }}
-              />
-            </>
-          )}
-          {selectedCard == 0 && (
-            <Card1
-              card={cards[0]}
-              cardData={cardData}
-              width="300px"
-              animateCard1={animateCard1}
-            />
-          )}
-          {selectedCard === 1 && <Card2 card={cards[1]} cardData={cardData} />}
-          {selectedCard === 2 && <Card3 card3={cards[2]} cardData={cardData} />}
+            <Grid>
+              {selectedCard == null && (
+                <>
+                  <Box
+                    sx={{
+                      width: 400,
+                      height: 230,
+                      margin: "auto",
+                      marginTop: "20px",
+                      borderRadius: "20px",
+                      backgroundColor: "#ECECEC",
+                      "&:hover": {
+                        backgroundColor: "#D5D5D5",
+                        opacity: [0.9, 0.8, 0.7],
+                      },
+                    }}
+                  />
+                </>
+              )}
+            </Grid>
+
+            <Grid>
+              {selectedCard == null && (
+                <>
+                  <Box
+                    sx={{
+                      width: 400,
+                      height: 230,
+                      margin: "auto",
+                      marginTop: "20px",
+                      borderRadius: "20px",
+                      backgroundColor: "#ECECEC",
+                      "&:hover": {
+                        backgroundColor: "#D5D5D5",
+                        opacity: [0.9, 0.8, 0.7],
+                      },
+                    }}
+                  />
+                </>
+              )}
+            </Grid>
+
+            <Grid ref={frontComponentRef}>
+              {selectedCard == 0 && (
+                <Card1
+                  card={cards[0]}
+                  cardData={cardData}
+                  width="300px"
+                  animateCard1={animateCard1}
+                />
+              )}
+              {selectedCard === 1 && (
+                <Card2 card={cards[1]} cardData={cardData} />
+              )}
+              {selectedCard === 2 && (
+                <Card3 card3={cards[2]} cardData={cardData} />
+              )}
+            </Grid>
+            <div>
+              <Print ref={{ frontComponentRef }} />
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
-    </Grid>
+      </div>
+    </>
   );
 }
 
