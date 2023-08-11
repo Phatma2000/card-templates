@@ -17,8 +17,17 @@ import Card1 from "../../components/Cards/Card1/Card1";
 import Print from "../../components/Print";
 
 function Form() {
-  const { cardData, setCardData, selectedCard, setSelectedCard, cards, selectedFile, setSelectedFile,} = 
-    useContext(Store);
+  const {
+    cardData,
+    setCardData,
+    selectedCard,
+    setSelectedCard,
+    cards,
+    fileDataURL,
+    setFileDataURL,
+    selectedFile,
+    setSelectedFile,
+  } = useContext(Store);
   const [animateCard1, setAnimateCard1] = useState(false);
 
   // const [selectData, setSelectData] = useState([]);
@@ -43,10 +52,16 @@ function Form() {
   ]);
   const [message, setMessage] = useState("");
   const templateBox = useRef(null);
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const file = e.target.logo.files[0];
+
+    if (file) {
+      const blobURL = URL.createObjectURL(file);
+      setFileDataURL(blobURL);
+    }
 
     const cardInformation = {
       name: e.target.name.value,
@@ -151,28 +166,23 @@ function Form() {
     setSelectedCard(id);
   };
 
-    // const handleSubmitt = (event) => {
-    //   event.preventDefault();
-    //   if (selectedFile) {
-    //     onImageUpload(selectedFile);
-    //   }
-    // };
+  // const handleSubmitt = (event) => {
+  //   event.preventDefault();
+  //   if (selectedFile) {
+  //     onImageUpload(selectedFile);
+  //   }
+  // };
   //  const fileInputRef = useRef(null)
 
   //  const handleLabelClick = () => {
   //   fileInputRef.current.click()
   //  };
 
-
-
   // const handlePrint =  useReactToPrint({
   //   content: () => componentRef.current,
   //   documentTitle: "emp-data",
   //   onAfterPrint: () => alert("Print Success")
   // });
-
-  
-
 
   return (
     <>
@@ -208,15 +218,12 @@ function Form() {
              <label onClick={handleLabelClick} htmlFor="upload">upload photo
              <input type="file" style={{display:"none"}} />
              </label>
-            
-           
              
           </div> */}
+              <Box>
+                <input type="file" name="logo" />
+              </Box>
 
-          <form action="" >
-
-              <input type="file"  />
-          </form>
               <Button
                 style={{ marginTop: "20px" }}
                 size="large"

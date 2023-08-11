@@ -8,14 +8,16 @@ import Store from "../../context/store";
 
 const VisitCard = ({ card, animateCard1 }) => {
   const { cardData } = useContext(Store);
-  const { selectedFile, setSelectedFile } = useContext(Store);
+  const { selectedFile, setSelectedFile, fileDataURL, setFileDataURL } =
+    useContext(Store);
 
-  const handleImageChange = (e) => {
+  // const handleImageChange = (e) => {
     
-    const file = e.target.value[0];
-    console.log("file", file);
-    // setSelectedFile(file);
-  };
+  //   const file = e.target.value[0];
+  //   console.log("file", file);
+  //   // setSelectedFile(file);
+  // };
+
 
   return (
     <div className="cards">
@@ -30,11 +32,11 @@ const VisitCard = ({ card, animateCard1 }) => {
           <div className={card.firstCardContent.LogoBox}>
             <img
               // onLoad={handleImageChange}
-              onLoad={e => console.log(e.target.value)}
+              // onLoad={e => console.log(e.target.value)}
               value={selectedFile}
               accept="image/*"
               className={card.firstCardContent.cardLogo}
-              src={`${card.firstCardContent.LogoContent}`}
+              src={`${fileDataURL}`}
               alt=""
             />
           </div>

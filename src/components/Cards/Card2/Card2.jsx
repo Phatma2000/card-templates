@@ -1,22 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 //assets
 import Logo from "../Card2/Logo.svg";
 //css
 import "./Card2.css";
+import Store from "../../context/store";
 
 const Card2 = ({ card, cardData }) => {
-  
+  const {  fileDataURL, setFileDataURL } =
+    useContext(Store);
   return (
     <div className="cards">
       {/* first card */}
       <div
         className={card.firstCardContent.firstCard}
         style={{
-         backgroundImage: `url(${card.firstCardContent.backGroundImage})`,
+          backgroundImage: `url(${card.firstCardContent.backGroundImage})`,
         }}
       >
         <div className="design-div">
-          <img className="logo-img" src={Logo} alt="fd" />
+          <img className="logo-img" src={`${fileDataURL}`}  />
           <h3 className={card.firstCardContent.companyName}>
             {cardData.companyName
               ? cardData.companyName
@@ -41,7 +43,6 @@ const Card2 = ({ card, cardData }) => {
         className={card.secondCardContent.secondCard}
         style={{
           backgroundImage: `url(${card?.secondCardContent.backGroundImage})`,
-          
         }}
       >
         <div className="company-info">
@@ -96,7 +97,7 @@ const Card2 = ({ card, cardData }) => {
             </p>
             <p className={card.addressText[2].className}>
               {cardData?.email ? cardData.email : card?.addressText[2].text}
-            </p>            
+            </p>
             <p className={card.addressText[3].className}>
               {cardData?.website ? cardData.website : card?.addressText[3].text}
             </p>

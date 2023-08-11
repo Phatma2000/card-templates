@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 //css
 import "./Card3.css";
 //assets
 import CardFirst from "../Card3/CardFirst.png";
 import CardSecond from "../Card3/CardSecond.png";
 import CardLogo from "../Card3/CardLogo.svg";
+import Store from "../../context/store";
 const Card3 = ({ card3, cardData }) => {
+  const { fileDataURL, setFileDataURL } = useContext(Store);
   return (
     <>
       <div className="cards">
@@ -20,7 +22,7 @@ const Card3 = ({ card3, cardData }) => {
           }}
         >
           <div className="text-general">
-            <img src={CardLogo} alt="" className="card-logo" />
+            <img src={`${fileDataURL}`} alt="" className="card-logo" />
             <h1 className={card3.firstCardContent.companyName}>
               {cardData.companyName
                 ? cardData.companyName
@@ -94,13 +96,21 @@ const Card3 = ({ card3, cardData }) => {
 
             <div>
               <p className="location-text">
-                {cardData?.address ? cardData.address : card3.addressText[0].text}</p>
+                {cardData?.address
+                  ? cardData.address
+                  : card3.addressText[0].text}
+              </p>
               <p className="phone-text">
-                {cardData?.phone ? cardData.phone : card3.addressText[1].text } </p>
+                {cardData?.phone ? cardData.phone : card3.addressText[1].text}{" "}
+              </p>
               <p className="envelope-text">
-                {cardData?.email ? cardData.email : card3.addressText[2].text}</p>
+                {cardData?.email ? cardData.email : card3.addressText[2].text}
+              </p>
               <p className="arrow-text">
-                {cardData?.website ? cardData.website : card3.addressText[3].text}</p>
+                {cardData?.website
+                  ? cardData.website
+                  : card3.addressText[3].text}
+              </p>
             </div>
           </div>
         </div>

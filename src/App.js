@@ -28,7 +28,7 @@ import { Button } from "@mui/material";
 function App() {
   const [selectedCard, setSelectedCard] = useState(0);
   const [cardData, setCardData] = useState([]);
-
+  const [fileDataURL, setFileDataURL] = useState(null);
   
   const cards = [
     {
@@ -272,7 +272,7 @@ function App() {
       </Button> */}
       
       <Store.Provider
-        value={{ selectedCard, setSelectedCard, cards, cardData, setCardData }}
+        value={{ selectedCard, setSelectedCard,fileDataURL, setFileDataURL, cards, cardData, setCardData }}
       >
         <BrowserRouter>
           <Routes>
