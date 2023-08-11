@@ -7,7 +7,7 @@ import CardSecond from "../Card3/CardSecond.png";
 import CardLogo from "../Card3/CardLogo.svg";
 import Store from "../../context/store";
 const Card3 = ({ card3, cardData }) => {
-  const { fileDataURL, setFileDataURL } = useContext(Store);
+  const { selectFile,fileDataURL, setFileDataURL } = useContext(Store);
   return (
     <>
       <div className="cards">
@@ -22,7 +22,9 @@ const Card3 = ({ card3, cardData }) => {
           }}
         >
           <div className="text-general">
-            <img src={`${fileDataURL}`} alt="" className="card-logo" />
+            <img src={`${fileDataURL}`}
+             alt="" className="card-logo"
+             value={selectFile} />
             <h1 className={card3.firstCardContent.companyName}>
               {cardData.companyName
                 ? cardData.companyName

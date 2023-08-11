@@ -34,7 +34,7 @@ const VisitCard = ({ card, animateCard1 }) => {
               // onLoad={handleImageChange}
               // onLoad={e => console.log(e.target.value)}
               value={selectedFile}
-              accept="image/*"
+              
               className={card.firstCardContent.cardLogo}
               src={`${fileDataURL}`}
               alt=""
@@ -91,7 +91,7 @@ const VisitCard = ({ card, animateCard1 }) => {
                 <div key={card.contactList[0].id}>
                   <p style={card.contactList[0].customStyle || {}}>
                     {cardData.address
-                      ? cardData.address
+                      ? cardData.address.slice(0,30)
                       : card.contactList[0].text}
                   </p>
                 </div>
