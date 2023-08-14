@@ -341,7 +341,7 @@ function Form() {
               )}
             </Grid>
             <div>
-              <Print ref={{ frontComponentRef }} />
+              <Print  ref={{ frontComponentRef }} />
             </div>
           </Grid>
         </Grid>

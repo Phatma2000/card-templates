@@ -1,13 +1,15 @@
-
-@page {
-  size: 400px 230px !important; /* Business card size */
-  margin: 0; /* No margins for the printed page */
-}
-
-@media print {
-  body {
-    
-    margin: 0; /* No margins for the printed content */
-    background: none; /* No background color or image for the printed content */
-  }
-}
+/* @media print{
+  @page {
+      size: 400px 230px;
+      margin: 0;
+    }
+  
+    body {
+      margin: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      width: 400px;
+      height: 230px;
+      overflow: hidden;
+    }
+} */

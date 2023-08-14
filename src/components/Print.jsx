@@ -1,52 +1,46 @@
-import React, { forwardRef, memo, useEffect } from "react";
-// import ReactDOMServer from "react-dom/server";
-// import { useReactToPrint } from "react-to-print";
+import React, { forwardRef, memo, useContext, useEffect } from "react";
+
+import { useReactToPrint } from "react-to-print";
+import Store from "./context/store";
 
 const Print = forwardRef((props, ref) => {
-  const handlePrint = () => {
-    const printWindow = window.open("", "_blank");
 
-    const visitCardContent =
-      ref.frontComponentRef.current?.firstChild?.firstChild;
-    if (visitCardContent) {
-      const contentToPrint = visitCardContent.cloneNode(true);
-      const linkTags = document.querySelectorAll('link[rel="stylesheet"]');
+const {cards}=useContext(Store)
+console.log(cards);
 
-      printWindow.document.head.innerHTML = `
-    <style>
+
+  const handlePrint1 = useReactToPrint({
+    content: () => ref.frontComponentRef.current?.lastChild?.lastChild,
+
+    documentTitle: "business-card",
+    pageStyle: `
       @page {
-        size: 400px 230px; 
+       size: 3in 2in;
         margin: 0;
-      }
-      body {
-        margin: 0;
-        // -webkit-print-color-adjust: exact;
-        // print-color-adjust: exact;
-        width: 400px; 
-        height: 230px;
-        // overflow: hidden;
-      }
-    </style>
-  `;
-
-      printWindow.document.body.appendChild(contentToPrint);
-      linkTags.forEach((link) =>
-        printWindow.document.head.appendChild(link.cloneNode(true))
-      );
-    } else {
-      console.error("Visit card content not found.");
-      printWindow.close();
-      return;
+        border-radius: 10px !important;
+      } 
+     body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
     }
+    html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+     #sizer {
+      /* Adjust the size of the content inside the 'sizer' element */
+      width: 100%;
+      height: 100%;
+      /* Add any additional styling you need for the content */
+    }
+     
 
-    printWindow.print();
-    printWindow.close();
-  };
-
-  // const handlePrint1 = useReactToPrint({
-  //   content: () => ref.frontComponentRef.current?.lastChild?.lastChild,
-  //   documentTitle: "emp-data",
-  // });
+        `,
+  });
 
   return (
     <>
@@ -58,7 +52,7 @@ const Print = forwardRef((props, ref) => {
         }}
       >
         <button
-          onClick={handlePrint}
+          // onClick={handlePrint}
           style={{
             color: "#fff",
             background: "#457b9d",
@@ -72,7 +66,7 @@ const Print = forwardRef((props, ref) => {
           Print Front
         </button>
         <button
-          // onClick={handlePrint1}
+          onClick={handlePrint1}
           style={{
             color: "#fff",
             background: "#457b9d",
